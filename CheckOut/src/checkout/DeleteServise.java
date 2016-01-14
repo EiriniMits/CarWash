@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package checkout;
 
 import java.io.BufferedReader;
@@ -110,7 +106,11 @@ public class DeleteServise extends JFrame{
                                         System.exit(0);
                                     }
                                     remove(s,id); 
-                             
+                                try {
+                                    AvailableServices a1=new AvailableServices();
+                                } catch (IOException ex) {
+                                    Logger.getLogger(DeleteServise.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                     frame2.dispose();
                             }
                             else if(dialogResult == JOptionPane.NO_OPTION){

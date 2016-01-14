@@ -3,7 +3,6 @@ package carwashclient;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JFrame;
 
 /**
  * This class has all the listeners for all the buttons in the virtual keyboard which is created in the FirstWinClient

@@ -1,15 +1,5 @@
 package checkout;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Anestis
- */
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -29,6 +19,7 @@ public class AvailableServices {
     private static ArrayList<Services> listServices;
     /**
      * Constructor of the Available Services offered to the client
+     * @throws java.io.IOException
      */
     public AvailableServices() throws IOException {
         

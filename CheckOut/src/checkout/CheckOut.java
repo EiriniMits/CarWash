@@ -11,6 +11,7 @@ public class CheckOut {
     /**
      * Starts the Check out application used by the user of the system 
      * @param args 
+     * @throws java.io.IOException 
      */
     public static void main(String[] args) throws IOException {
         AvailableServices a1=new AvailableServices();

@@ -7,4 +7,4 @@
 Βιολογικός καθαρισμός εσωτ.\ Biological inside wash \ 6 \ \ 80 80 0
 Κέρωμα-Γυάλισμα\ Wax polishing\ 7 \ \ 80 90 40 
 Καθαρισμός κινητήρα\ Engine cleaing\ 8 \ \ 20 20 10 
-Πλύσιμο σασί\ Chasis cleaning\ 9 \ \ 3 3 0
+Πλύσιμο σασί\ Chasis cleaning\ 9 \ \ 3 3 0 

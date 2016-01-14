@@ -29,12 +29,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.Timer;
 
 /**
  *
  * @author Anestis, Eirini
  */
-public class ShowAvailableServices extends JFrame  {
+public class ShowAvailableServices extends JFrame implements ActionListener {
     private static final int MAX1 = 60;
     private static final int MAX2 = 15;
     private static ButtonGroup vehicle;
@@ -44,11 +45,13 @@ public class ShowAvailableServices extends JFrame  {
     private static JButton addButton;
     private static JButton removeButton;
     private static JButton returnButton;
-
+     Timer timer=new Timer(1000, this);
     private static int flagVihicle = 0;   
 
 
-    public ShowAvailableServices()throws IOException{  
+    public ShowAvailableServices()throws IOException{
+        timer.start();
+        
         JFrame frame= new JFrame();
         addButton = new JButton(" Προσθήκη Υπηρεσίας");
         removeButton = new JButton(" Διαγραφή Υπηρεσίας");
@@ -198,7 +201,7 @@ public class ShowAvailableServices extends JFrame  {
         add(returnButton, gbc);
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 
-
+    
     }
     public static String servSetText(String a, int max) {//gia stixisi
         for (int j = 0; j < max - a.length(); j++) {
@@ -234,5 +237,13 @@ public class ShowAvailableServices extends JFrame  {
     public static ButtonGroup getVihicle() {
         return vehicle;
     }
-    
+
+
+    @Override
+    public void actionPerformed(ActionEvent ev){
+    if(ev.getSource()==timer){
+       
+       this.repaint();// this will call at every 1 second
+    }
+     }
 }
