@@ -20,19 +20,17 @@ private ArrayList<String> inputData;
     public InfoSend(ArrayList<String> infSen,int bool) {
         if(bool==0){// o pelaths stelnei thn aposei3h sto server
             try {
-                //Prepei na ginei allagh gia to LAN
-                Socket echoSocket = new Socket("localhost", 7896);
-                PrintWriter serverOut = new PrintWriter(echoSocket.getOutputStream(), true);
-                OutputStream outToServer = echoSocket.getOutputStream();
-                DataOutputStream out = new DataOutputStream(outToServer);
-                Scanner serverIn = new Scanner(echoSocket.getInputStream());
-                out.writeUTF("0");
-                for (int i = 0; i < infSen.size(); i++) {
-                    serverOut.println(infSen.get(i));
+                try ( //Prepei na ginei allagh gia to LAN
+                        Socket echoSocket = new Socket("localhost", 7896); PrintWriter serverOut = new PrintWriter(echoSocket.getOutputStream(), true)) {
+                    OutputStream outToServer = echoSocket.getOutputStream();
+                    DataOutputStream out = new DataOutputStream(outToServer);
+                    try (Scanner serverIn = new Scanner(echoSocket.getInputStream())) {
+                        out.writeUTF("0");
+                        for (String infSen1 : infSen) {
+                            serverOut.println(infSen1);
+                        }
+                    }
                 }
-                serverIn.close();
-                serverOut.close();
-                echoSocket.close();
             } catch (UnknownHostException e) {
                 ErrorMessage error = new ErrorMessage(this,"Δεν είναι δυνατή η σύνδεση με το διακομιστή ελέγξτε τη σύνδεση σας στο δίκτυο.","Σφάλμα κατά τη σύνδεση");
                 error.setVisible(true);
@@ -43,21 +41,19 @@ private ArrayList<String> inputData;
         }
         else{ //o pelaths pernei tis uparxouses uphresies apo ton server
             try {
-            Socket echoSocket = new Socket("localhost", 7896);
-            PrintWriter serverOut = new PrintWriter(echoSocket.getOutputStream(), true);
-            OutputStream outToServer = echoSocket.getOutputStream();
-            DataOutputStream out = new DataOutputStream(outToServer);
-            Scanner serverIn = new Scanner(echoSocket.getInputStream());
-            out.writeUTF("1");
-            inputData = new ArrayList<>();
-            do {
-                String message = serverIn.nextLine();
-                inputData.add(message);
-                serverOut.println(message);
-            } while (serverIn.hasNextLine());
-            serverIn.close();
-            serverOut.close();
-            echoSocket.close();
+                try (Socket echoSocket = new Socket("localhost", 7896); PrintWriter serverOut = new PrintWriter(echoSocket.getOutputStream(), true)) {
+                    OutputStream outToServer = echoSocket.getOutputStream();
+                    DataOutputStream out = new DataOutputStream(outToServer);
+                    try (Scanner serverIn = new Scanner(echoSocket.getInputStream())) {
+                        out.writeUTF("1");
+                        inputData = new ArrayList<>();
+                        do {
+                            String message = serverIn.nextLine();
+                            inputData.add(message);
+                            serverOut.println(message);
+                        } while (serverIn.hasNextLine());
+                    }
+                }
             } catch (UnknownHostException e) {
                 ErrorMessage error = new ErrorMessage(this,"Δεν είναι δυνατή η σύνδεση με το διακομιστή ελέγξτε τη σύνδεση σας στο δίκτυο.","Σφάλμα κατά τη σύνδεση");
                 error.setVisible(true);

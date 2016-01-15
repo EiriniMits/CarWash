@@ -28,7 +28,6 @@ public class ClickListener implements ActionListener {
                 }
                 InfoSend newSend = new InfoSend(blank,1);
                 CarWashClient.getWin1().setVisible(false);                
-                System.out.println(error1);
                 CarWashClient.Redraw();
                 CarWashClient.getWin2().setVisible(true);
             } catch (Exception d) {

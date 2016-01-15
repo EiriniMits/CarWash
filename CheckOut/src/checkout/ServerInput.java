@@ -58,9 +58,9 @@ public class ServerInput {
             file = new ArrayList<>();
         readText();
         try {
-            for (int i = 0; i < file.size(); i++) {
-                clientOut.println(file.get(i));
-            }
+                for (String file1 : file) {
+                    clientOut.println(file1);
+                }
             clientIn.close();
             clientOut.close();
             clientSocket.close();
@@ -108,8 +108,8 @@ public class ServerInput {
         String time = dateFormat.format(date);
 
         int cost = 0;
-        for (int i = 0; i < servArray.size(); i++) {
-            cost += AvailableServices.getListServices().get(servArray.get(i)).getCost()[Integer.parseInt(inputData.get(1))];
+        for (Integer servArray1 : servArray) {
+            cost += AvailableServices.getListServices().get(servArray1).getCost()[Integer.parseInt(inputData.get(1))];
         }
 
 
