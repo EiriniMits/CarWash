@@ -29,13 +29,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.Timer;
 
 /**
  *
  * @author Anestis, Eirini
  */
-public class ShowAvailableServices extends JFrame implements ActionListener {
+public class ShowAvailableServices extends JFrame{
     private static final int MAX1 = 60;
     private static final int MAX2 = 15;
     private static ButtonGroup vehicle;
@@ -45,12 +44,11 @@ public class ShowAvailableServices extends JFrame implements ActionListener {
     private static JButton addButton;
     private static JButton removeButton;
     private static JButton returnButton;
-     Timer timer=new Timer(1000, this);
     private static int flagVihicle = 0;   
 
 
     public ShowAvailableServices()throws IOException{
-        timer.start();
+        
         
         JFrame frame= new JFrame();
         addButton = new JButton(" Προσθήκη Υπηρεσίας");
@@ -131,12 +129,13 @@ public class ShowAvailableServices extends JFrame implements ActionListener {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                     try {
                     AvailableServices a1=new AvailableServices();
                 } catch (IOException ex) {
                     Logger.getLogger(ShowAvailableServices.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                    AddServise add = new AddServise();       
+                    AddServise add = new AddServise();                    
             }
         });
         gbc.insets = new Insets(50, 50, 50, 0);
@@ -150,6 +149,7 @@ public class ShowAvailableServices extends JFrame implements ActionListener {
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 try {
                     AvailableServices a1=new AvailableServices();
                 } catch (IOException ex) {
@@ -171,6 +171,7 @@ public class ShowAvailableServices extends JFrame implements ActionListener {
         changeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 try {
                     AvailableServices a1=new AvailableServices();
                 } catch (IOException ex) {
@@ -238,12 +239,4 @@ public class ShowAvailableServices extends JFrame implements ActionListener {
         return vehicle;
     }
 
-
-    @Override
-    public void actionPerformed(ActionEvent ev){
-    if(ev.getSource()==timer){
-       
-       this.repaint();// this will call at every 1 second
-    }
-     }
 }
