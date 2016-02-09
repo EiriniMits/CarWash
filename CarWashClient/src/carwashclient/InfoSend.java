@@ -47,11 +47,12 @@ private ArrayList<String> inputData;
                     try (Scanner serverIn = new Scanner(echoSocket.getInputStream())) {
                         out.writeUTF("1");
                         inputData = new ArrayList<>();
-                        do {
+                        for(int j=1; j<100;j++){
                             String message = serverIn.nextLine();
+                            if(message.equals("End")) break;
                             inputData.add(message);
                             serverOut.println(message);
-                        } while (serverIn.hasNextLine());
+                        } 
                     }
                 }
             } catch (UnknownHostException e) {

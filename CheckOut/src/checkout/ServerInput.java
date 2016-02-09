@@ -58,9 +58,11 @@ public class ServerInput {
             file = new ArrayList<>();
         readText();
         try {
+            
                 for (String file1 : file) {
                     clientOut.println(file1);
                 }
+                clientOut.println("End");
             clientIn.close();
             clientOut.close();
             clientSocket.close();
