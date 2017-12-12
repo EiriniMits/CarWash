@@ -1,5 +1,7 @@
 # CarWash
 
+CarWash is an Open Source Application in “GFOSS”.
+
 An application of a car wash company, written in java, designed to handle the vehicles it serves. It allows two computers to communicate locally via sockets. The first computer is in the "slot" and records the vehicles entering (signs, type of car) as well as the services requested by their drivers. These data are sent to the second computer in the cashier and the cashier receives the vehicle data from the host computer, issues the payment receipts and records the data in the company's electronic revenue book.
 
 
